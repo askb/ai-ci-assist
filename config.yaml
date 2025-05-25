@@ -1,0 +1,3 @@
+jobs_path: "jjb/"
+ignore_files:
+  - "jjb/global-jjb/**"
