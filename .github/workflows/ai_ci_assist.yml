@@ -1,6 +1,7 @@
 name: AI CI Assist
 
 on:
+  workflow_dispatch:
   pull_request:
     paths:
       - 'jjb/**/*.yaml'
@@ -26,5 +27,8 @@ jobs:
           python analyzer/jjblint.py
 
       - name: Run AI suggestions
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
+          echo "Running AI assist..."
           python analyzer/suggest_improvements.py
